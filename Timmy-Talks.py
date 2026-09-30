@@ -87,14 +87,14 @@ def responses(name):
                 print(f"\nTimmy: {feeling_response}\n")
             
             elif player_input == "help":
-                print("\nTimmy: Some things to try:\n\n1. Say: Hi, Hello.\n\n2. Ask: Whats the time\n\n3. Ask: Whats the weather\n\n4. Ask: What's my name\n\n5. Say: Hey timmy, timmy\n\n6. Restart and name yourself timmy or Timmy\n\n7. Ask: Whats your name\n\n8. Ask: How old are you\n\n10. Ask: Whats your gender\n\n11. Ask: How are you, are you okay, how do you feel\n\n12. Ask: How to cook a egg\n\n13. Ask any or questions, ex: timmy whats better oled or lcd\n\n14. Say your name is something that isn't your name, ex: Emerson: My name is bob\n\n15. Say your age\n\n16 Ask: Whats my name\n\n17. Say: Credits, Who made you, Who created you")
+                print("\nTimmy: Some things to try:\n\n1. Say: Hi, Hello.\n\n2. Ask: Whats the time\n\n3. Ask: Whats the weather\n\n4. Ask: What's my name\n\n5. Say: Hey timmy, timmy\n\n6. Restart and name yourself timmy or Timmy\n\n7. Ask: Whats your name\n\n8. Ask: How old are you\n\n10. Ask: Whats your gender\n\n11. Ask: How are you, are you okay, how do you feel\n\n12. Ask: How to cook a egg\n\n13. Ask any or questions, ex: timmy whats better oled or lcd\n\n14. Say your name is something that isn't your name, ex: Emerson: My name is bob\n\n15. Say your age\n\n16 Ask: Whats my name\n\n17. Say: Credits, Who made you, Who created you", "Say: knock knock")
 
             elif "old" in player_input and "i" in player_input and "am" in player_input and has_number == True or "i" in player_input and "am" in player_input and has_number == True:
                 print(f"\nTimmy: Nice I'm 0 years old\n")
                 age = [int(item) for item in split_input if item.isdigit()]
 
             elif "knock knock" in player_input:
-                print("\nTimmy: Whose there\n")
+                print("\nTimmy: Who's there\n")
             
             elif "how" in player_input and "old" in player_input and "i" in player_input and has_number == False or "what" in player_input and "my" in player_input and "age" in player_input and has_number == False:
                 
@@ -108,7 +108,7 @@ def responses(name):
             else:
                 print(f"\nTimmy: {idk_response}\n")
             break
-
+    
 name_response_list1 = ["Hello", "Hi", "Ah", "Hey", "Whats up", "Sup", "Nice to meet you", "It's a pleasure to meet you"]
 name_response_list2 = ["I'm timmy", "I'm dad", "thats your name I was right about to say it", "my name is timmy", "I KNOW WHAT YOU DID", "me is timmy", "me timmy"]
 name_response1 = random.choice(name_response_list1)
