@@ -2,6 +2,8 @@ import random
 from datetime import datetime
 import sys
 age = []
+colors = ["red", "orange", "yellow", "green", "blue", "purple", "pink", "brown", "black", "white", "gray", "turquoise", "chartreuse", "lime", "darker grey", "really dark grey", "cyan", "magenta"]
+tim_fav_color = random.choice(colors)
 def responses(name):
     hello_response_list = ["Hello, I'm timmy", "Hi", "I'm timmy, do you need anything", "Hello", "Back in my day we didn't have chat bots", "HI"]
     weather_words = ["Its a bit cloudy out.", "It seems to be storming right now, at least where I live.", "How do you expect me to know the weather where you live"]
@@ -30,9 +32,11 @@ def responses(name):
     weather_response = random.choice(weather_words)
     player_input = input(f"{name}: ").lower()
     current_time = datetime.now().strftime("%I:%M %p")
-    idk_words = ["Sorry I didn't catch that", "Huh?", "wat those words", "Me no understand", "射么？", "?", "我不知道", "I don't understand", "I haven't learned those words yet", "Idk google it urself", "Go here: google.com"]
+    idk_words = ["Sorry I didn't catch that", "Huh?", "wat those words", "Me no understand", "射么？", "?", "我不知道", "I don't understand", "I haven't learned those words yet", "Idk google it urself", "Go here: google.com", f"{player_input}?"]
     idk_response = random.choice(idk_words)
     split_input = player_input.split()
+    your_name_responses = ["Seriously, how do you not know your own name did you hit your head too hard", f"Your name is {name}" ]
+    your_name_response = random.choice(your_name_responses)
     global age
     name_lower = name.lower()
     has_number = any(char.isdigit() for char in player_input)
@@ -41,8 +45,7 @@ def responses(name):
             print(f"\nTimmy: {hello_response}\n")
             break
         else:  
-            if "or" in player_input:
-                
+            if " or " in player_input:
                 or_position = split_input.index("or")
                 random_integer = random.randint(1, 2)
                 if random_integer == 2:
@@ -54,7 +57,7 @@ def responses(name):
                 print(f"\nTimmy: {call_name_response}\n")
 
             elif "name" in player_input and "my" in player_input and "what" in player_input:
-                print(f"\nTimmy: Your name is {name}... I think.\n")
+                print(f"\nTimmy: {your_name_response}\n")
 
             elif "time" in player_input and "what" in player_input:
                 print(f"\nTimmy: It's aproximatly {current_time}\n")
@@ -95,6 +98,9 @@ def responses(name):
 
             elif "knock knock" in player_input:
                 print("\nTimmy: Who's there\n")
+
+            elif "you" in player_input and "are" in player_input and "cool" in player_input or "you" in player_input and "are" in player_input and "nice" in player_input or "you" in player_input and "are" in player_input and "funny" in player_input:
+                print(f"\nTimmy: Why thanks\n")
             
             elif "how" in player_input and "old" in player_input and "i" in player_input and has_number == False or "what" in player_input and "my" in player_input and "age" in player_input and has_number == False:
                 
@@ -102,9 +108,15 @@ def responses(name):
 
             elif "credit" in player_input or "created" in player_input and "you" in player_input or "made" in player_input and "you" in player_input:
                 print(f"\nTimmy: {credits_response}\n")
+
+            elif "favorite" in player_input and "what" in player_input and "color" in player_input and "your" in player_input:
+                print(f"\nTimmy: My favorite color is {tim_fav_color}\n")
             
             elif name_lower in player_input:
                 print(f"\nTimmy: That's you\n")
+
+            elif "you" in player_input and "are" in player_input:
+                print(f"\nTimmy: Don't say that about me\n")
             else:
                 print(f"\nTimmy: {idk_response}\n")
             break
