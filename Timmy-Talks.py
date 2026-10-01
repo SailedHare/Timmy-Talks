@@ -20,7 +20,7 @@ def responses(name):
     feeling_list = ["I'm doing great how about you", "I'm doing horrible, you keep on asking me question after question just like google it I don't even know that much why do you torture me", "I am a chatbot I don't have feelings", "I feel fine", "I'm okay", "I feel tired"]
     gender_responses = ["I identify as he/him", "That is so rude, I take offense", "What does gender mean"]
     gender_response = random.choice(gender_responses)
-    or_question_list = ["If I had to I'd choose", "I guess I'd choose", "If you're really making me, I guess I'd choose", "Easy,", "I'd choose", ""]
+    or_question_list = ["If I had to I'd choose", "I guess I'd choose", "If you're really making me, I guess I'd choose", "Easy,", "I'd choose"]
     or_question_response = random.choice(or_question_list)
     credits_responses = ["I was created by Emerson", "I was made with the power of friendship", "I was made in China", "Code: Emerson, Voicelines: Emerson, Cool awesome amazing dude: Emerson(not biased)", "Made with love and care", "I was made by Emerson Sher"]
     credits_response = random.choice(credits_responses)
@@ -32,14 +32,21 @@ def responses(name):
     weather_response = random.choice(weather_words)
     player_input = input(f"{name}: ").lower()
     current_time = datetime.now().strftime("%I:%M %p")
-    idk_words = ["Sorry I didn't catch that", "Huh?", "wat those words", "Me no understand", "射么？", "?", "我不知道", "I don't understand", "I haven't learned those words yet", "Idk google it urself", "Go here: google.com", f"{player_input}?"]
+    idk_words = ["Sorry I didn't catch that", "Huh?", "wat those words", "Me no understand", "射么？", "?", "我不知道", "I don't understand", "I haven't learned those words yet", "Idk google it urself", "Go here: google.com", f"{player_input}?", f"{player_input}, wdym"]
     idk_response = random.choice(idk_words)
     split_input = player_input.split()
     your_name_responses = ["Seriously, how do you not know your own name did you hit your head too hard", f"Your name is {name}" ]
     your_name_response = random.choice(your_name_responses)
+    mean_responses = ["That's not very kind", "F### you", "I hate you too", "Think of better insults", f"{player_input}, really, those words don't even move me 1 milimeter"]
+    mean_response = random.choice(mean_responses)
+    no_no_word_responses = ["We don't say those words around here", "That's not very kind to be saying", "That's the word my mom calls me", "LANGUAGE", "I am going to wash your mouth out with soap", "We should say those words they are not nice and can harm peoples feelings"]
+    no_no_word_response = random.choice(no_no_word_responses)
+    past_input = ""
+    next_word = 0
     global age
     name_lower = name.lower()
     has_number = any(char.isdigit() for char in player_input)
+    
     for i in hello_words:
         if i in player_input:
             print(f"\nTimmy: {hello_response}\n")
@@ -49,9 +56,20 @@ def responses(name):
                 or_position = split_input.index("or")
                 random_integer = random.randint(1, 2)
                 if random_integer == 2:
-                    print(f"\nTimmy: {or_question_response} {split_input[or_position-1]}\n")
+                    if split_input[or_position-1] == "me":
+                        print(f"\nTimmy: {or_question_response} you\n")
+                    elif split_input[or_position-1] == "you":
+                        print(f"\nTimmy: {or_question_response} me\n")
+                    else:
+                        print(f"\nTimmy: {or_question_response} {split_input[or_position-1]}\n")
                 else:
-                    print(f"\nTimmy: {or_question_response} {split_input[or_position+1]}\n")
+                    if split_input[or_position+1] == "me":
+                        print(f"\nTimmy: {or_question_response} you\n")
+                    elif split_input[or_position+1] == "you":
+                        print(f"\nTimmy: {or_question_response} me\n")
+                    else:
+                        print(f"\nTimmy: {or_question_response} {split_input[or_position+1]}\n")
+
             
             elif "timmy" in player_input or "hey" in player_input:
                 print(f"\nTimmy: {call_name_response}\n")
@@ -71,7 +89,7 @@ def responses(name):
             elif "game" in player_input and "what" in player_input and "you" in player_input and "play" in player_input or "game" in player_input and "what" in player_input and "you" in player_input and "like" in player_input:
                 print(f"\nTimmy: {game_list1_response} {game_list2_response}\n")
             
-            elif "name" in player_input and "my" in player_input and name_lower not in player_input:
+            elif "name" in player_input and "my" in player_input and name_lower not in player_input and "is" in player_input:
                 print(f"\nTimmy: That's not your name, your name is {name}\n")
 
             elif "how" in player_input and "egg" in player_input and "to" in player_input:
@@ -82,6 +100,9 @@ def responses(name):
 
             elif "what" in player_input and "gender" in player_input or "identify" in player_input and "you" in player_input:
                 print(f"\nTimmy: {gender_response}\n")
+
+            elif "you" in player_input and "suck" in player_input or "i" in player_input and "hate" in player_input and "you" in player_input or "i" in player_input and "die" in player_input and "hope" in player_input or "f " in player_input and " you" in player_input or "screw" in player_input and "you" in player_input:
+                print(f"\nTimmy: {mean_response}\n")
 
             elif "what" in player_input and "age" in player_input and "you" in player_input or "how" in player_input and "old" in player_input and "you" in player_input:
                 print(f"\nTimmy: {age_response}\n")
@@ -117,10 +138,17 @@ def responses(name):
 
             elif "you" in player_input and "are" in player_input:
                 print(f"\nTimmy: Don't say that about me\n")
-            else:
+
+            elif "repeat" in player_input:
+                print(f"\nTimmy: {past_input}\n")
+
+            elif "what" in player_input:
                 print(f"\nTimmy: {idk_response}\n")
+            else:
+                print(f"")
             break
-    
+   
+
 name_response_list1 = ["Hello", "Hi", "Ah", "Hey", "Whats up", "Sup", "Nice to meet you", "It's a pleasure to meet you"]
 name_response_list2 = ["I'm timmy", "I'm dad", "thats your name I was right about to say it", "my name is timmy", "I KNOW WHAT YOU DID", "me is timmy", "me timmy"]
 name_response1 = random.choice(name_response_list1)
