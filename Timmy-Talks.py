@@ -57,7 +57,6 @@ def responses(name):
     math_hard_response = random.choice(math_hard_responses)
 
 # ALL OF THE CODE ----------------------------------------------
-    
     for i in hello_words:
         if i in player_input:
             print(f"\nTimmy: {hello_response}\n")
@@ -80,50 +79,14 @@ def responses(name):
                         print(f"\nTimmy: {or_question_response} me\n")
                     else:
                         print(f"\nTimmy: {or_question_response} {split_input[or_position+1]}\n")
-            elif " + " in player_input:
-                math_input = player_input.split()
-                plus_pos = math_input.index("+")
-                result = (int(math_input[plus_pos-1]) + int(math_input[plus_pos+1]))
-                math_easy_responses = [f"Easy {result}", f"Too easy, it's {result}", f"Erm actually if you don't know this you are actually intellectually lacking, but if you really need the answer, the answer is {result}", f"It's {result}", f"Simple, {result}", f"{result}"] 
-                math_medium_responses = [f"The answer would be {result}", f"This one is a bit difficult, well atleast for you, anyways the answer is {result}", f"Umm... hmm.. it's {result + random.randint(-5, 5)}" , f"Okay, it's... {result}"]
-                math_hard_responses = [f"You gave me a tricky one, but thats not going to stop me, The answer is {result}", f"According to my calculations it's {result}", f"This one is quite simple, you need to dome simple maths and you get {result}", f"Umm... Hmm... this one is quite tricky, hmm... uh I think the answer is {result+ random.randint(-100, 100)}", f"Too Easy, it's {result}", "idk just use a calculator atp"]
-                math_easy_response = random.choice(math_easy_responses)
-                math_medium_response = random.choice(math_medium_responses)
-                math_hard_response = random.choice(math_hard_responses)
-                if result < 100 or result > -100:
-                    print(f"\nTimmy: {math_easy_response}\n")
-                elif result < 1000 and result > 100 or result > -1000 and result < -100:
-                    print(f"\nTimmy: {math_medium_response}\n")
-                elif result > 1000 or result < -1000:
-                    print(f"\nTimmy: {math_hard_response}\n")
-            elif "+" in player_input:
-                print(f"\nTimmy: Sorry, I can't understand math when do don't put spacing between stuff\n")          
-            elif " - " in player_input:
-                math_input = player_input.split()
-                minus_pos = math_input.index("-")
-                result = 0
-                result = (int(math_input[minus_pos-1]) - int(math_input[minus_pos+1]))
-                math_easy_responses = [f"Easy {result}", f"Too easy, it's {result}", f"Erm actually if you don't know this you are actually intellectually lacking, but if you really need the answer, the answer is {result}", f"It's {result}", f"Simple, {result}", f"{result}"] 
-                math_medium_responses = [f"The answer would be {result}", f"This one is a bit difficult, well atleast for you, anyways the answer is {result}", f"Umm... hmm.. it's {result + random.randint(-5, 5)}" , f"Okay, it's... {result}"]
-                math_hard_responses = [f"You gave me a tricky one, but thats not going to stop me, The answer is {result}", f"According to my calculations it's {result}", f"This one is quite simple, you need to dome simple maths and you get {result}", f"Umm... Hmm... this one is quite tricky, hmm... uh I think the answer is {result+ random.randint(-100, 100)}", f"Too Easy, it's {result}", "idk just use a calculator atp"]
-                math_easy_response = random.choice(math_easy_responses)
-                math_medium_response = random.choice(math_medium_responses)
-                math_hard_response = random.choice(math_hard_responses)
-                if result < 100 or result > -100:
-                    print(f"\nTimmy: {math_easy_response}\n")
-                elif result < 1000 and result > 100 or result > -1000 and result < -100:
-                    print(f"\nTimmy: {math_medium_response}\n")
-                elif result > 1000 or result < -1000:
-                    print(f"\nTimmy: {math_hard_response}\n")
-            elif "-" in player_input:
-                print(f"\nTimmy: Sorry, I can't understand math when do don't put spacing between stuff\n")            
-            elif " * " in player_input or " • " in player_input:
+            
+            elif " * " in player_input and has_number == True or " • " in player_input and has_number == True :
                 math_input = player_input.split()
                 if "*" in player_input:
                     times_pos = math_input.index("*")
                 elif "•" in player_input:
                     times_pos = math_input.index("•")
-                result = (int(math_input[times_pos-1]) * int(math_input[times_pos+1]))
+                result = (float(math_input[times_pos-1]) * float(math_input[times_pos+1]))
                 math_easy_responses = [f"Easy {result}", f"Too easy, it's {result}", f"Erm actually if you don't know this you are actually intellectually lacking, but if you really need the answer, the answer is {result}", f"It's {result}", f"Simple, {result}", f"{result}"] 
                 math_medium_responses = [f"The answer would be {result}", f"This one is a bit difficult, well atleast for you, anyways the answer is {result}", f"Umm... hmm.. it's {result + random.randint(-5, 5)}" , f"Okay, it's... {result}"]
                 math_hard_responses = [f"You gave me a tricky one, but thats not going to stop me, The answer is {result}", f"According to my calculations it's {result}", f"This one is quite simple, you need to dome simple maths and you get {result}", f"Umm... Hmm... this one is quite tricky, hmm... uh I think the answer is {result+ random.randint(-100, 100)}", f"Too Easy, it's {result}", "idk just use a calculator atp"]
@@ -138,13 +101,13 @@ def responses(name):
                     print(f"\nTimmy: {math_hard_response}\n")           
             elif "*" in player_input or "•" in player_input:
                 print(f"\nTimmy: Sorry, I can't understand math when do don't put spacing between stuff\n")
-            elif " / " in player_input or " ÷ " in player_input:
+            elif " / " in player_input and has_number == True or " ÷ " in player_input and has_number == True :
                 math_input = player_input.split()
                 if "/" in player_input:
                     divide_pos = math_input.index("/")
                 elif "÷" in player_input:
                     divide_pos = math_input.index("÷")
-                result = (int(math_input[divide_pos-1]) / int(math_input[divide_pos+1]))
+                result = (float(math_input[divide_pos-1]) / float(math_input[divide_pos+1]))
                 math_easy_responses = [f"Easy {result}", f"Too easy, it's {result}", f"Erm actually if you don't know this you are actually intellectually lacking, but if you really need the answer, the answer is {result}", f"It's {result}", f"Simple, {result}", f"{result}"] 
                 math_medium_responses = [f"The answer would be {result}", f"This one is a bit difficult, well atleast for you, anyways the answer is {result}", f"Umm... hmm.. it's {result + random.randint(-5, 5)}" , f"Okay, it's... {result}"]
                 math_hard_responses = [f"You gave me a tricky one, but thats not going to stop me, The answer is {result}", f"According to my calculations it's {result}", f"This one is quite simple, you need to dome simple maths and you get {result}", f"Umm... Hmm... this one is quite tricky, hmm... uh I think the answer is {result+ random.randint(-100, 100)}", f"Too Easy, it's {result}", "idk just use a calculator atp"]
@@ -159,6 +122,45 @@ def responses(name):
                     print(f"\nTimmy: {math_hard_response}\n")   
             elif "/" in player_input or "÷" in player_input:
                 print(f"\nTimmy: Sorry, I can't understand math when do don't put spacing between stuff\n")
+            elif " + " in player_input and has_number == True :
+                math_input = player_input.split()
+                plus_pos = math_input.index("+")
+            
+                result = (float(math_input[plus_pos-1]) + float(math_input[plus_pos+1]))
+                math_easy_responses = [f"Easy {result}", f"Too easy, it's {result}", f"Erm actually if you don't know this you are actually intellectually lacking, but if you really need the answer, the answer is {result}", f"It's {result}", f"Simple, {result}", f"{result}"] 
+                math_medium_responses = [f"The answer would be {result}", f"This one is a bit difficult, well atleast for you, anyways the answer is {result}", f"Umm... hmm.. it's {result + random.randint(-5, 5)}" , f"Okay, it's... {result}"]
+                math_hard_responses = [f"You gave me a tricky one, but thats not going to stop me, The answer is {result}", f"According to my calculations it's {result}", f"This one is quite simple, you need to dome simple maths and you get {result}", f"Umm... Hmm... this one is quite tricky, hmm... uh I think the answer is {result+ random.randint(-100, 100)}", f"Too Easy, it's {result}", "idk just use a calculator atp"]
+                math_easy_response = random.choice(math_easy_responses)
+                math_medium_response = random.choice(math_medium_responses)
+                math_hard_response = random.choice(math_hard_responses)
+                if result < 100 or result > -100:
+                    print(f"\nTimmy: {math_easy_response}\n")
+                elif result < 1000 and result > 100 or result > -1000 and result < -100:
+                    print(f"\nTimmy: {math_medium_response}\n")
+                elif result > 1000 or result < -1000:
+                    print(f"\nTimmy: {math_hard_response}\n")
+            elif "+" in player_input:
+                print(f"\nTimmy: Sorry, I can't understand math when do don't put spacing between stuff\n")          
+            elif " - " in player_input and has_number == True :
+                math_input = player_input.split()
+                minus_pos = math_input.index("-")
+                result = 0
+                result = (float(math_input[minus_pos-1]) - float(math_input[minus_pos+1]))
+                math_easy_responses = [f"Easy {result}", f"Too easy, it's {result}", f"Erm actually if you don't know this you are actually intellectually lacking, but if you really need the answer, the answer is {result}", f"It's {result}", f"Simple, {result}", f"{result}"] 
+                math_medium_responses = [f"The answer would be {result}", f"This one is a bit difficult, well atleast for you, anyways the answer is {result}", f"Umm... hmm.. it's {result + random.randint(-5, 5)}" , f"Okay, it's... {result}"]
+                math_hard_responses = [f"You gave me a tricky one, but thats not going to stop me, The answer is {result}", f"According to my calculations it's {result}", f"This one is quite simple, you need to dome simple maths and you get {result}", f"Umm... Hmm... this one is quite tricky, hmm... uh I think the answer is {result+ random.randint(-100, 100)}", f"Too Easy, it's {result}", "idk just use a calculator atp"]
+                math_easy_response = random.choice(math_easy_responses)
+                math_medium_response = random.choice(math_medium_responses)
+                math_hard_response = random.choice(math_hard_responses)
+                if result < 100 or result > -100:
+                    print(f"\nTimmy: {math_easy_response}\n")
+                elif result < 1000 and result > 100 or result > -1000 and result < -100:
+                    print(f"\nTimmy: {math_medium_response}\n")
+                elif result > 1000 or result < -1000:
+                    print(f"\nTimmy: {math_hard_response}\n")
+            elif "-" in player_input:
+                print(f"\nTimmy: Sorry, I can't understand math when do don't put spacing between stuff\n")            
+
             elif "timmy" in player_input or "hey" in player_input:
                 print(f"\nTimmy: {call_name_response}\n")
 
@@ -238,40 +240,43 @@ def responses(name):
             else:
                 print(f"")
             break
-   
-# Starting Voice Things ----------------------
-name_questions = ["What's your name?", "What was your name again?", "What should I call you by?", "Huh, who are you", "Who are you, and what are you doing in my swamp"]
-name_question = random.choice(name_questions)
-name = input(f"\nTimmy: {name_question}\n\nName: ")
-timmy_name_responses = [f"{name}, I really like your name, anyone with that name is super hansome and charizmatic", f"{name}, that name sounds familiar", "That's a really awesome amazing great name", "You copycat thats my name not yours, I won't let you taint my name"]
-timmy_name_response = random.choice(timmy_name_responses)
-name_response_list1 = [f"Hello {name} I'm timmy", f"Hi {name}", f"Ah {name} was it, I think I've heard that name before", f"Hey {name} I'm Timmy", f"Whats up {name}", f"Sup {name}", f"Nice to meet you {name}", f"It's a pleasure to meet you {name}", f"Well well well, {name} we meet again"]
-name_response1 = random.choice(name_response_list1)
-emerson_name_responses = [f"Don't even think it't funny to use my creators name, to make sure it's you type in the correct password", f"That's a amazing name, anyone with that name is super awesome, cool, funny, charming name(I was definetly not programed to say thay), \nwait you could be lying, type password to confirm it's you"]
-emerson_name_response = random.choice(emerson_name_responses)
-password = "1234"
-if name.lower() == "timmy":
-    if timmy_name_response == "You copycat thats my name not yours, I won't let you taint my name":
-        print(f"\nTimmy: {timmy_name_response}\n")
-        name = "[]"
-        print(f"Timmy: Ha, how do you like it now no name\n")
-    else:
-        print(f"\nTimmy: {timmy_name_response}\n")
-elif name.lower() == "mybutt":
-    print(f"\nTimmy: Haha your so funny\n")
 
-elif name.lower() == "emerson":
-    print(f"\nTimmy: {emerson_name_response}\n")
-    password_input = input("Password: ")
-    if password_input == password:
-        print(f"\nPassword Accepted, Hello Emerson\n")
-    else:
-        print(f"\nPassword DENIED, Changing name\n")
-        name = "[]"
+def main():
+    # Starting Voice Things ----------------------
+    name_questions = ["What's your name?", "What was your name again?", "What should I call you by?", "Huh, who are you", "Who are you, and what are you doing in my swamp"]
+    name_question = random.choice(name_questions)
+    name = input(f"\nTimmy: {name_question}\n\nName: ")
+    timmy_name_responses = [f"{name}, I really like your name, anyone with that name is super hansome and charizmatic", f"{name}, that name sounds familiar", "That's a really awesome amazing great name", "You copycat thats my name not yours, I won't let you taint my name"]
+    timmy_name_response = random.choice(timmy_name_responses)
+    name_response_list1 = [f"Hello {name} I'm timmy", f"Hi {name}", f"Ah {name} was it, I think I've heard that name before", f"Hey {name} I'm Timmy", f"Whats up {name}", f"Sup {name}", f"Nice to meet you {name}", f"It's a pleasure to meet you {name}", f"Well well well, {name} we meet again"]
+    name_response1 = random.choice(name_response_list1)
+    emerson_name_responses = [f"Don't even think it't funny to use my creators name, to make sure it's you type in the correct password", f"That's a amazing name, anyone with that name is super awesome, cool, funny, charming name(I was definetly not programed to say thay), \nwait you could be lying, type password to confirm it's you"]
+    emerson_name_response = random.choice(emerson_name_responses)
+    password = "1234"
+    if name.lower() == "timmy":
+        if timmy_name_response == "You copycat thats my name not yours, I won't let you taint my name":
+            print(f"\nTimmy: {timmy_name_response}\n")
+            name = "[]"
+            print(f"Timmy: Ha, how do you like it now, no name\n")
+        else:
+            print(f"\nTimmy: {timmy_name_response}\n")
+    elif name.lower() == "mybutt":
+        print(f"\nTimmy: Haha your so funny\n")
 
-else: 
-    print(f"\nTimmy: {name_response1}\n")
-while True:
-    responses(name)
+    elif name.lower() == "emerson":
+        print(f"\nTimmy: {emerson_name_response}\n")
+        password_input = input("Password: ")
+        if password_input == password:
+            print(f"\nPassword Accepted, Hello Emerson\n")
+        else:
+            print(f"\nPassword DENIED, Changing name\n")
+            name = "[]"
+
+    else: 
+        print(f"\nTimmy: {name_response1}\n")
+    while True:
+        responses(name)
 
 
+if __name__ == "__main__":
+    main()
