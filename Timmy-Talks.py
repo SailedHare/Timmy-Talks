@@ -3,6 +3,7 @@ from datetime import datetime
 age = []
 colors = ["red", "orange", "yellow", "green", "blue", "purple", "pink", "brown", "black", "white", "gray", "turquoise", "chartreuse", "lime", "darker grey", "really dark grey", "cyan", "magenta"]
 tim_fav_color = random.choice(colors)
+result = 0
 def responses(name):
 # VARIABLES --------------------------------------------------------------
     player_input = input(f"{name}: ").lower()
@@ -10,12 +11,12 @@ def responses(name):
     split_input = player_input.split()
     past_input = ""
     global age
+    global result
     name_lower = name.lower()
     has_number = any(char.isdigit() for char in player_input)
-
 # VOICE LINES -------------------------------------------------------------
     hello_response_list = ["Hello, I'm timmy", "Hi", "I'm timmy, do you need anything", "Hello", "Back in my day we didn't have chat bots", "HI"]
-    weather_words = ["Its a bit cloudy out.", "It seems to be storming right now, at least where I live.", "How do you expect me to know the weather where you live"]
+    weather_words = ["Its a bit cloudy out", "It seems to be storming right now, at least where I live", "How do you expect me to know the weather where you live"]
     hello_words = ["hi", "hello", "sup", "what's up"]
     call_name_responses = ["Yeah?", "?", "What do you want now", "WHAT DO YOU WANT FROM ME", "What", "Yeah", "Sup", "Present", "At your service", "Uh huh", "Yes", "yeah", "yes", "Huh", "Wat", "Hi"]
     timmy_name_responses = ["Call me Big Tim from now on", "I'm timmy", "My name is timmy", "They call me the timinator in these parts", "My name, seriously it's literally right\n  ⬆︎  there"]
@@ -30,6 +31,12 @@ def responses(name):
     idk_words = ["Sorry I didn't catch that", "Huh?", "wat those words", "Me no understand", "射么？", "?", "我不知道", "I don't understand", "I haven't learned those words yet", "Idk google it urself", "Go here: google.com", f"{player_input}?", f"{player_input}, wdym"]
     your_name_responses = ["Seriously, how do you not know your own name did you hit your head too hard", f"Your name is {name}" ]
     mean_responses = ["That's not very kind", "F### you", "I hate you too", "Think of better insults", f"{player_input}, really, those words don't even move me 1 milimeter"]
+    math_easy_responses = [f"Easy {result}", f"Too easy, it's {result}", f"Erm actually if you don't know this you are actually intellectually lacking, but if you really need the answer, the answer is {result}", f"It's {result}", f"Simple, {result}", f"{result}"] 
+    math_medium_responses = [f"The answer would be {result}", f"This one is a bit difficult, well atleast for you, anyways the answer is {result}", f"Umm... hmm.. it's {result + random.randint(-5, 5)}" , f"Okay, it's... {result}"]
+    math_hard_responses = [f"You gave me a tricky one, but thats not going to stop me, The answer is {result}", f"According to my calculations it's {result}", f"This one is quite simple, you need to dome simple maths and you get {result}", f"Umm... Hmm... this one is quite tricky, hmm... uh I think the answer is {result+ random.randint(-100, 100)}", f"Too Easy, it's {result}", "idk just use a calculator atp"]
+
+
+# Random Voiceline Variables
     your_name_response = random.choice(your_name_responses)
     mean_response = random.choice(mean_responses)
     idk_response = random.choice(idk_words)
@@ -45,8 +52,12 @@ def responses(name):
     hello_response = random.choice(hello_response_list)
     weather_response = random.choice(weather_words)
     timmy_name_response = random.choice(timmy_name_responses)
-# -------------------------------------------------------------
+    math_easy_response = random.choice(math_easy_responses)
+    math_medium_response = random.choice(math_medium_responses)
+    math_hard_response = random.choice(math_hard_responses)
+
 # ALL OF THE CODE ----------------------------------------------
+    
     for i in hello_words:
         if i in player_input:
             print(f"\nTimmy: {hello_response}\n")
@@ -72,27 +83,82 @@ def responses(name):
             elif " + " in player_input:
                 math_input = player_input.split()
                 plus_pos = math_input.index("+")
-                result = 0
                 result = (int(math_input[plus_pos-1]) + int(math_input[plus_pos+1]))
-                print(f"\nTimmy: Easy maths, it's {int(result)}\n")
-
+                math_easy_responses = [f"Easy {result}", f"Too easy, it's {result}", f"Erm actually if you don't know this you are actually intellectually lacking, but if you really need the answer, the answer is {result}", f"It's {result}", f"Simple, {result}", f"{result}"] 
+                math_medium_responses = [f"The answer would be {result}", f"This one is a bit difficult, well atleast for you, anyways the answer is {result}", f"Umm... hmm.. it's {result + random.randint(-5, 5)}" , f"Okay, it's... {result}"]
+                math_hard_responses = [f"You gave me a tricky one, but thats not going to stop me, The answer is {result}", f"According to my calculations it's {result}", f"This one is quite simple, you need to dome simple maths and you get {result}", f"Umm... Hmm... this one is quite tricky, hmm... uh I think the answer is {result+ random.randint(-100, 100)}", f"Too Easy, it's {result}", "idk just use a calculator atp"]
+                math_easy_response = random.choice(math_easy_responses)
+                math_medium_response = random.choice(math_medium_responses)
+                math_hard_response = random.choice(math_hard_responses)
+                if result < 100 or result > -100:
+                    print(f"\nTimmy: {math_easy_response}\n")
+                elif result < 1000 and result > 100 or result > -1000 and result < -100:
+                    print(f"\nTimmy: {math_medium_response}\n")
+                elif result > 1000 or result < -1000:
+                    print(f"\nTimmy: {math_hard_response}\n")
+            elif "+" in player_input:
+                print(f"\nTimmy: Sorry, I can't understand math when do don't put spacing between stuff\n")          
             elif " - " in player_input:
                 math_input = player_input.split()
                 minus_pos = math_input.index("-")
                 result = 0
                 result = (int(math_input[minus_pos-1]) - int(math_input[minus_pos+1]))
-                print(f"\nTimmy: Easy maths, it's {int(result)}\n")
-
+                math_easy_responses = [f"Easy {result}", f"Too easy, it's {result}", f"Erm actually if you don't know this you are actually intellectually lacking, but if you really need the answer, the answer is {result}", f"It's {result}", f"Simple, {result}", f"{result}"] 
+                math_medium_responses = [f"The answer would be {result}", f"This one is a bit difficult, well atleast for you, anyways the answer is {result}", f"Umm... hmm.. it's {result + random.randint(-5, 5)}" , f"Okay, it's... {result}"]
+                math_hard_responses = [f"You gave me a tricky one, but thats not going to stop me, The answer is {result}", f"According to my calculations it's {result}", f"This one is quite simple, you need to dome simple maths and you get {result}", f"Umm... Hmm... this one is quite tricky, hmm... uh I think the answer is {result+ random.randint(-100, 100)}", f"Too Easy, it's {result}", "idk just use a calculator atp"]
+                math_easy_response = random.choice(math_easy_responses)
+                math_medium_response = random.choice(math_medium_responses)
+                math_hard_response = random.choice(math_hard_responses)
+                if result < 100 or result > -100:
+                    print(f"\nTimmy: {math_easy_response}\n")
+                elif result < 1000 and result > 100 or result > -1000 and result < -100:
+                    print(f"\nTimmy: {math_medium_response}\n")
+                elif result > 1000 or result < -1000:
+                    print(f"\nTimmy: {math_hard_response}\n")
+            elif "-" in player_input:
+                print(f"\nTimmy: Sorry, I can't understand math when do don't put spacing between stuff\n")            
             elif " * " in player_input or " • " in player_input:
                 math_input = player_input.split()
                 if "*" in player_input:
                     times_pos = math_input.index("*")
                 elif "•" in player_input:
                     times_pos = math_input.index("•")
-                result = 0
                 result = (int(math_input[times_pos-1]) * int(math_input[times_pos+1]))
-                print(f"\nTimmy: Easy maths, it's {int(result)}\n")
-            
+                math_easy_responses = [f"Easy {result}", f"Too easy, it's {result}", f"Erm actually if you don't know this you are actually intellectually lacking, but if you really need the answer, the answer is {result}", f"It's {result}", f"Simple, {result}", f"{result}"] 
+                math_medium_responses = [f"The answer would be {result}", f"This one is a bit difficult, well atleast for you, anyways the answer is {result}", f"Umm... hmm.. it's {result + random.randint(-5, 5)}" , f"Okay, it's... {result}"]
+                math_hard_responses = [f"You gave me a tricky one, but thats not going to stop me, The answer is {result}", f"According to my calculations it's {result}", f"This one is quite simple, you need to dome simple maths and you get {result}", f"Umm... Hmm... this one is quite tricky, hmm... uh I think the answer is {result+ random.randint(-100, 100)}", f"Too Easy, it's {result}", "idk just use a calculator atp"]
+                math_easy_response = random.choice(math_easy_responses)
+                math_medium_response = random.choice(math_medium_responses)
+                math_hard_response = random.choice(math_hard_responses)
+                if result < 100 or result > -100:
+                    print(f"\nTimmy: {math_easy_response}\n")
+                elif result < 1000 and result > 100 or result > -1000 and result < -100:
+                    print(f"\nTimmy: {math_medium_response}\n")
+                elif result > 1000 or result < -1000:
+                    print(f"\nTimmy: {math_hard_response}\n")           
+            elif "*" in player_input or "•" in player_input:
+                print(f"\nTimmy: Sorry, I can't understand math when do don't put spacing between stuff\n")
+            elif " / " in player_input or " ÷ " in player_input:
+                math_input = player_input.split()
+                if "/" in player_input:
+                    divide_pos = math_input.index("/")
+                elif "÷" in player_input:
+                    divide_pos = math_input.index("÷")
+                result = (int(math_input[divide_pos-1]) / int(math_input[divide_pos+1]))
+                math_easy_responses = [f"Easy {result}", f"Too easy, it's {result}", f"Erm actually if you don't know this you are actually intellectually lacking, but if you really need the answer, the answer is {result}", f"It's {result}", f"Simple, {result}", f"{result}"] 
+                math_medium_responses = [f"The answer would be {result}", f"This one is a bit difficult, well atleast for you, anyways the answer is {result}", f"Umm... hmm.. it's {result + random.randint(-5, 5)}" , f"Okay, it's... {result}"]
+                math_hard_responses = [f"You gave me a tricky one, but thats not going to stop me, The answer is {result}", f"According to my calculations it's {result}", f"This one is quite simple, you need to dome simple maths and you get {result}", f"Umm... Hmm... this one is quite tricky, hmm... uh I think the answer is {result+ random.randint(-100, 100)}", f"Too Easy, it's {result}", "idk just use a calculator atp"]
+                math_easy_response = random.choice(math_easy_responses)
+                math_medium_response = random.choice(math_medium_responses)
+                math_hard_response = random.choice(math_hard_responses)
+                if result < 100 or result > -100:
+                    print(f"\nTimmy: {math_easy_response}\n")
+                elif result < 1000 and result > 100 or result > -1000 and result < -100:
+                    print(f"\nTimmy: {math_medium_response}\n")
+                elif result > 1000 or result < -1000:
+                    print(f"\nTimmy: {math_hard_response}\n")   
+            elif "/" in player_input or "÷" in player_input:
+                print(f"\nTimmy: Sorry, I can't understand math when do don't put spacing between stuff\n")
             elif "timmy" in player_input or "hey" in player_input:
                 print(f"\nTimmy: {call_name_response}\n")
 
@@ -122,6 +188,9 @@ def responses(name):
 
             elif "what" in player_input and "gender" in player_input or "identify" in player_input and "you" in player_input:
                 print(f"\nTimmy: {gender_response}\n")
+
+            elif "where" in player_input and "live" in player_input and "you" in player_input:
+                print(f"\nTimmy: My mom told me not to tell strangers where I live but I don't think of you as a strager so I live on 1532 Timmyland ave California\n")
 
             elif "you" in player_input and "suck" in player_input or "i" in player_input and "hate" in player_input and "you" in player_input or "i" in player_input and "die" in player_input and "hope" in player_input or "f " in player_input and " you" in player_input or "screw" in player_input and "you" in player_input:
                 print(f"\nTimmy: {mean_response}\n")
